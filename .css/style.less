@@ -1,0 +1,68 @@
+//variables
+
+//mixins
+.background-size(@width, @height) {
+  -webkit-background-size: @width @height;
+  -moz-background-size: @width @height;
+  -o-background-size: @width @height;
+  background-size: @width @height;
+}
+
+.pos(@top, @left) {
+  top: @top;
+  left: @left;
+}
+
+//styles
+body {
+  font-family: arial, serif;
+  background: #efede0;
+  font-size: 14px;
+  height: 100%;
+  .wrapper {
+    width: 100%;
+    height: 100;
+    .header {
+      width: 100%;
+      .pos(0,0);
+      text-align: center;
+    }
+    .cont {
+      float: left;
+      width: 97%;
+      height: 70%;
+      position: absolute;
+      .button {
+        position: absolute;
+        text-align: center;
+        width: 25%;
+        .title {
+          text-align: center;
+          font-size: 100%;
+        }
+        &.a {
+          .pos(5%,5%);
+        }
+        &.b {
+          .pos(5%,68%);
+        }
+        &.c {
+          .pos(63%,2%);
+        }
+        &.d {
+          .pos(53%,31%);
+        }
+        &.e {
+          .pos(40%,60%);
+        }
+      }
+    }
+    .footer {
+      width: 96%;
+      position: absolute;
+      bottom: 0;
+      text-align: center;
+      font-size: 150%;
+    }
+  }
+}
