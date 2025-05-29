@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  frontend:
+    # image: your-frontend-image # To be defined later
+    # build: ./frontend # To be defined later
+    ports:
+      - "8080:80" # Example port mapping (host:container)
+    environment:
+      - NODE_ENV=development
+      # - API_BASE_URL=http://backend:3000/api # Example for connecting to backend
+    networks:
+      - app-network
+    # volumes:
+      # - ./frontend:/app # Example for development hot-reloading
+
+  backend:
+    # image: your-backend-image # To be defined later
+    # build: ./backend # To be defined later
+    ports:
+      - "3000:3000" # Example port mapping
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=your_database_connection_string # Placeholder
+      # - AI_MODEL_SERVICE_URL=http://aimodel:5000/predict # Example
+    depends_on:
+      - database # If you add a database service
+      # - aimodel # If the AI model is a separate service
+    networks:
+      - app-network
+    # volumes:
+      # - ./backend:/app # Example for development
+
+  aimodel:
+    # image: your-aimodel-image # To be defined later
+    # build: ./aimodel # To be defined later
+    # ports:
+    #   - "5000:5000" # If it's an API service
+    environment:
+      - PYTHONUNBUFFERED=1
+      # - MODEL_PATH=/app/model.pkl # Example
+    networks:
+      - app-network
+    # volumes:
+      # - ./aimodel:/app # Example
+      # - ./data:/app/data # Example for model data
+
+  # database: # Example database service (e.g., PostgreSQL, MongoDB)
+  #   image: postgres:13
+  #   ports:
+  #     - "5432:5432"
+  #   environment:
+  #     - POSTGRES_USER=user
+  #     - POSTGRES_PASSWORD=password
+  #     - POSTGRES_DB=appdb
+  #   volumes:
+  #     - db_data:/var/lib/postgresql/data
+  #   networks:
+  #     - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+# volumes: # Define named volumes if needed
+#   db_data:
