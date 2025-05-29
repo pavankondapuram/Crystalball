@@ -1,0 +1,21 @@
+# Basic AI/ML Libraries
+pandas>=1.0.0
+numpy>=1.18.0
+scikit-learn>=0.23.0
+
+# For specific model types, you might add:
+# tensorflow>=2.0
+# torch>=1.7
+# xgboost
+# lightgbm
+
+# For data processing or specific tasks:
+# scipy
+# statsmodels
+
+# For serving (if applicable within this environment, e.g. Flask/FastAPI for predict.py)
+# Flask
+# FastAPI
+# uvicorn
+
+# Note: Versions are examples; adjust based on your project's needs and compatibility.
